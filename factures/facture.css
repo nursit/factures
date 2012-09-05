@@ -1,0 +1,13 @@
+body {font-size:100%;background:#fff;}
+div.facture {width:600px;border:1px solid #999;background:#fff;margin:0 auto;padding:20px;}
+h1 {text-align:right;}
+p.date {text-align:right;}
+p.client {margin-left:300px;border-top:1px solid #999;border-bottom:1px solid #999;}
+table {margin:20px auto;border:1px solid #eee;border-collapse:collapse;width:90%;}
+table td,
+table th
+ {border:1px solid #eee;padding:3px;}
+table th {background:#eee;}
+table tr.total td {background:#eee;}
+.header {margin-bottom: 4em;}
+.footer {font-size: 0.9em;text-align: center;margin-top: 4em;}

@@ -1,0 +1,17 @@
+<div class='facture'>
+<BOUCLE_facture(factures){id_facture}>
+[(#INCLURE{fond=factures/top}{id_facture})]
+[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
+
+<h1>Facture #NO_COMPTABLE</h1>
+<p class='date'>du [(#DATE_PAIEMENT|jour)] [(#DATE_PAIEMENT|affdate_mois_annee)]</p>
+<p class='client'>#CLIENT</p>
+[<p class='commentaire'>(#COMMENTAIRE)</p>]
+#DETAILS
+[<p class='acquitee'>(#MONTANT_REGLE|=={#MONTANT}|?{' '})Facture acquitt&eacute;e</p>]
+
+[(#INCLURE{fond=factures/pied}{id_facture})]
+
+]
+</BOUCLE_facture>
+</div>
