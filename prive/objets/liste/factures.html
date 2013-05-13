@@ -33,7 +33,10 @@
 				<td class="montant">#MONTANT[(#MONTANT_REGLE|=={#MONTANT}|non)<br /><span class="warning">Réglé : #MONTANT_REGLE</span>]</td>
 				<td class="date">[(#DATE_PAIEMENT|affdate_heure)]</td>
 				<td class="parrain">#PARRAIN</td>
-				<td class="action"><small>#BOUTON_ACTION{Renvoyer,#URL_ACTION_AUTEUR{renvoyer_facture,#ID_FACTURE,#SELF}}</small></td>
+				<td class="action">[(#ENV{id_resend}|=={#ID_FACTURE}|?{
+					'<span class="success">Renvoyée</span>',
+					[<small>(#BOUTON_ACTION{Renvoyer,#URL_ACTION_AUTEUR{renvoyer_facture,#ID_FACTURE,#SELF|parametre_url{id_resend,#ID_FACTURE}}})</small>]
+					})]</td>
 			</tr>
 		</BOUCLE_factures>
 		</tbody>
