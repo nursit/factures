@@ -21,7 +21,7 @@ function factures_creer_facture($id_transaction){
 	  AND !($id_facture = $row['id_facture'])){
 
 		$details = recuperer_fond('modeles/transaction_details',array('id_transaction'=>$id_transaction));
-		$client = recuperer_fond('modeles/client_adresse_facture',array('id_auteur'=>$row['id_auteur']));
+		$client = recuperer_fond('modeles/client_adresse_facture',array('id_auteur'=>$row['id_auteur'],'id_transaction'=>$id_transaction));
 
 		$numeroter_facture = charger_fonction('numeroter_facture','inc');
 
