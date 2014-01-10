@@ -1,7 +1,7 @@
 <paquet
 	prefix="factures"
 	categorie="outil"
-	version="1.1.1"
+	version="1.1.2"
 	etat="stable"
 	compatibilite="[3.0.0;3.0.*]"
 	logo="prive/themes/spip/images/facture-32.png"
