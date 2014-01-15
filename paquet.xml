@@ -1,7 +1,7 @@
 <paquet
 	prefix="factures"
 	categorie="outil"
-	version="1.1.2"
+	version="1.1.3"
 	etat="stable"
 	compatibilite="[3.0.0;3.0.*]"
 	logo="prive/themes/spip/images/facture-32.png"
@@ -14,6 +14,7 @@
 	<pipeline nom="declarer_tables_principales" inclure="factures_administrations.php" />
 	<pipeline nom="bank_facturer_reglement" inclure="factures_pipelines.php" />
 	<pipeline nom="autoriser" inclure="factures_pipelines.php" />
+	<pipeline nom="rechercher_liste_des_champs" inclure="factures_pipelines.php" />
 
 	<menu nom="factures" titre="factures:icone_factures" parent="menu_activite" icone="images/facture-16.png" />
 

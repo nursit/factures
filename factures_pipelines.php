@@ -59,3 +59,14 @@ function factures_bank_facturer_reglement($flux){
 
 	return $flux;
 }
+
+function factures_rechercher_liste_des_champs($flux){
+
+	$flux['facture'] = array(
+		'id_facture' => 1,
+		'no_comptable' => 1,
+		'parrain' => 1,
+		'tracking_id' => 1,
+	);
+	return $flux;
+}
