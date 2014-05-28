@@ -31,6 +31,7 @@ function autoriser_facturer_dist(){ return true;}
 function factures_bank_facturer_reglement($flux){
 
 	include_spip("inc/transaction");
+	include_spip("inc/autoriser");
 
 	if (autoriser("facturer","transaction",$flux['args']['id_transaction'])){
 
