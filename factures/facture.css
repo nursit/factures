@@ -1,16 +1,22 @@
 body {font-size:100%;background:#fff;}
 div.facture {width:600px;border:1px solid #999;background:#fff;margin:0 auto;padding:20px;}
-h1 {text-align:right;}
+
+h1,h2 {text-align:right;margin-bottom: 0}
+p {margin-top: 0}
 p.date {text-align:right;}
-p.client {margin-left:300px;border-top:1px solid #999;border-bottom:1px solid #999;margin-bottom: 5em;}
+p.client {margin-left:300px;border-top:1px solid #999;border-bottom:1px solid #999;margin-bottom: 2.5em;}
+
 table {margin:20px auto;border:1px solid #eee;border-collapse:collapse;width:90%;}
-table td,
-table th
- {border:1px solid #eee;padding:3px;}
+table td, table th {border:1px solid #eee;padding:5px 10px;}
 table th {background:#eee;}
 table tr.total td {background:#eee;}
+
 .header {margin-bottom: 4em;}
-.footer {font-size: 0.9em;text-align: center;margin-top: 4em;}
+.header #logo_site_spip .spip_logos {max-width: 150px;height: auto;float:left;}
+.header #logo_site_spip { font-size: 2em;line-height: 1.15em;}
+.header #logo_site_spip small { display:block;font-size: 0.65em;line-height: 1;color:#888;font-weight: normal}
+
+.footer {font-size: 0.9em;text-align: center;margin: 4em 0 1em;}
 
 @media (max-width: 650px){
     div.facture {width: auto;border: 0;}

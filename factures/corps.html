@@ -3,7 +3,7 @@
 [(#INCLURE{fond=factures/top}{id_facture})]
 [(#ENV{hash,''}|=={#DETAILS|md5}|oui)
 
-<h1>Facture #NO_COMPTABLE</h1>
+<h2>Facture #NO_COMPTABLE</h2>
 <p class='date'>du [(#DATE_PAIEMENT|jour)] [(#DATE_PAIEMENT|affdate_mois_annee)]</p>
 <p class='client'>#CLIENT</p>
 [<p class='commentaire'>(#COMMENTAIRE)</p>]

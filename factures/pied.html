@@ -1,2 +1,6 @@
-<div class='footer'>
-</div>
+<footer class='footer'>
+	<address>
+		#CONFIG{factures/raison_sociale}[ <:factures:au_capital_de:> (#CONFIG{factures/capital})][ — RCS (#CONFIG{factures/rcs})][ — SIRET (#CONFIG{factures/siret})]<br />
+		[(#CONFIG{factures/adresse}) — ][(#CONFIG{factures/code_postal}|concat{' ',#CONFIG{factures/ville}}) — ][(#CONFIG{factures/pays}) — ][(#CONFIG{factures/telephone})]
+	</address>
+</footer>
