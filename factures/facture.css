@@ -16,6 +16,7 @@ table td.montant {text-align: right}
 table .total_ttc td {font-weight: bold}
 
 .header {margin-bottom: 4em;}
+.header #logo_site_spip {margin-top: 0}
 .header #logo_site_spip .spip_logos {max-width: 150px;height: auto;float:left;}
 .header #logo_site_spip { font-size: 2em;line-height: 1.15em;}
 .header #logo_site_spip small { display:block;font-size: 0.65em;line-height: 1;color:#888;font-weight: normal}

@@ -11,6 +11,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_raison_sociale' => 'Raison sociale',
 	'label_capital' => 'Capital',
 	'label_rcs' => 'N° RCS',
+	'label_no_intra_tva' => 'Numéro de TVA intracommunautaire',
 	'label_siret' => 'N° SIRET',
 	'label_adresse' => 'Adresse',
 	'label_code_postal' => 'Code Postal',
