@@ -7,9 +7,13 @@ p.date {text-align:right;}
 p.client {margin-left:300px;border-top:1px solid #999;border-bottom:1px solid #999;margin-bottom: 2.5em;}
 
 table {margin:20px auto;border:1px solid #eee;border-collapse:collapse;width:90%;}
+table caption {text-align: left;font-weight: bold}
 table td, table th {border:1px solid #eee;padding:5px 10px;}
 table th {background:#eee;}
 table tr.total td {background:#eee;}
+table th.montant,
+table td.montant {text-align: right}
+table .total_ttc td {font-weight: bold}
 
 .header {margin-bottom: 4em;}
 .header #logo_site_spip .spip_logos {max-width: 150px;height: auto;float:left;}
