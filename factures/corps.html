@@ -4,11 +4,11 @@
 	[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
 
 		<h2>Facture #NO_COMPTABLE</h2>
-		<p class='date'>du [(#DATE_PAIEMENT|jour)] [(#DATE_PAIEMENT|affdate_mois_annee)]</p>
+		<p class='date'>du [(#DATE|jour)] [(#DATE|affdate_mois_annee)]</p>
 		<p class='client'>#CLIENT</p>
 		[<p class='commentaire'>(#COMMENTAIRE)</p>]
 		#DETAILS
-		[<p class='acquitee'>(#MONTANT_REGLE|=={#MONTANT}|?{' '})Facture acquitt&eacute;e</p>]
+		[<p class='acquitee'>(#MONTANT_REGLE|=={#MONTANT}|?{' '})Facture acquitt&eacute;e le [(#DATE_PAIEMENT|affdate)]</p>]
 	]
 	[(#INCLURE{fond=factures/pied}{id_facture})]
 </BOUCLE_facture>

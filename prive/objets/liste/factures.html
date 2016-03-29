@@ -17,7 +17,7 @@
 				<th class='id_auteur' scope='col'>[(#TRI{id_auteur,Aut,ajax})]</th>
 				<th class='montant_ht' scope='col'>[(#TRI{montant_ht,HT,ajax})]</th>
 				<th class='montant' scope='col'>[(#TRI{montant,TTC,ajax})]</th>
-				<th class='date' scope='col'>[(#TRI{date_paiement,<:date:>,ajax})]</th>
+				<th class='date' scope='col'>[(#TRI{date,<:date:>,ajax})]</th>
 				<th class='parrain' scope='col'>[(#TRI{parrain,Parrain,ajax})]</th>
 				<th class='action' scope='col'></th>
 			</tr>
@@ -31,7 +31,9 @@
 				<td class="id_auteur"><a href='[(#ID_AUTEUR|generer_url_entite{auteur})]'>#ID_AUTEUR </a></td>
 				<td class="montant_ht">#MONTANT_HT</td>
 				<td class="montant">#MONTANT[(#MONTANT_REGLE|=={#MONTANT}|non)<br /><span class="warning">R&eacute;gl&eacute; : #MONTANT_REGLE</span>]</td>
-				<td class="date">[(#DATE_PAIEMENT|affdate_heure)]</td>
+				<td class="date">[<abbr title="[(#DATE|heures_minutes|attribut_html)]">(#DATE|affdate_jourcourt)</abbr>]
+				[(#DATE_PAIEMENT|affdate{Y-m-d}|=={#DATE|affdate{Y-m-d}}|non)<br /><span>[Payée le (#DATE_PAIEMENT|affdate_jourcourt)]</span>]
+				</td>
 				<td class="parrain">#PARRAIN</td>
 				<td class="action">[(#ENV{id_resend}|=={#ID_FACTURE}|?{
 					'<span class="success">Renvoy&eacute;e</span>',

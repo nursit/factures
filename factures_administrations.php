@@ -22,6 +22,7 @@ function factures_declarer_tables_principales($tables_principales){
 		"montant_ht" 	=> "varchar(25) NOT NULL DEFAULT ''",
 		"montant" 	=> "varchar(25) NOT NULL DEFAULT ''",
 		"montant_regle" 	=> "varchar(25) NOT NULL DEFAULT ''",
+		"date" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 		"date_paiement" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 		"client" => "TEXT NOT NULL DEFAULT ''",
 		"details" => "TEXT NOT NULL DEFAULT ''",
@@ -54,6 +55,11 @@ function factures_upgrade($nom_meta_base_version,$version_cible){
 	// creation initiale
 	$maj['create'] = array(
 		array('maj_tables',array('spip_factures')),
+	);
+
+	$maj['0.2.0'] = array(
+		array('maj_tables',array('spip_factures')),
+		array('sql_update','spip_factures',array('date'=>'date_paiement')),
 	);
 
 	// lancer la maj

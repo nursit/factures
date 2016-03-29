@@ -13,7 +13,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 
 
-function inc_numeroter_facture_dist($id_facture,$date_paiement){
-	$time = strtotime($date_paiement);
+function inc_numeroter_facture_dist($id_facture,$date){
+	$time = strtotime($date);
 	return "F.".date("Ymd",$time)."-$id_facture";
 }
