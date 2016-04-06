@@ -82,7 +82,7 @@ function factures_creer_facture($id_transaction, $options_notif=null){
 	$id_facture = sql_insertq('spip_factures',$set);
 
 	if ($id_facture){
-		$no_comptable = $numeroter_facture($id_facture,$row['date']);
+		$no_comptable = $numeroter_facture($id_facture,$set['date']);
 
 		$set['no_comptable'] = $no_comptable;
 		sql_updateq("spip_factures",array("no_comptable"=>$no_comptable),"id_facture=".intval($id_facture));
