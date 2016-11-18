@@ -98,6 +98,9 @@ function factures_creer_facture($id_transaction, $options_notif=null){
 			)
 		);
 
+		// on relit le no_comptable en base au cas ou le pipeline aurait surcharge
+		$no_comptable = sql_getfetsel('no_comptable', 'spip_factures', 'id_facture='.intval($id_facture));
+
 		$url= generer_url_public('facture',"id_facture=$id_facture&hash=".md5($set['details']),false,false);
 
 		if ($options_notif
@@ -105,7 +108,9 @@ function factures_creer_facture($id_transaction, $options_notif=null){
 		  AND $notifications = charger_fonction('notifications', 'inc')){
 			$options_notif['url_facture'] = $url;
 			$notifications("genererfacture", $id_facture, $options_notif);
+
 		}
+
 	}
 
 	return array($id_facture,$no_comptable,$url);
