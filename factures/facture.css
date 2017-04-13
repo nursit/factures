@@ -11,6 +11,8 @@ table caption {text-align: left;font-weight: bold}
 table td, table th {border:1px solid #eee;padding:5px 10px;}
 table th {background:#eee;}
 table tr.total td {background:#eee;}
+table th.prix_unitaire,
+table td.prix_unitaire {text-align: right}
 table th.montant,
 table td.montant {text-align: right}
 table .total_ttc td {font-weight: bold}
