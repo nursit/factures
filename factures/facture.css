@@ -17,6 +17,11 @@ table th.montant,
 table td.montant {text-align: right}
 table .total_ttc td {font-weight: bold}
 
+.small,small {font-size: 0.8em;}
+h2 small {display: block;}
+.proforma {color: #888;}
+h2.proforma {text-align: center}
+
 .header {margin-bottom: 4em;}
 .header #logo_site_spip {margin-top: 0}
 .header #logo_site_spip .spip_logos {max-width: 150px;height: auto;float:left;}

@@ -29,16 +29,42 @@ function factures_declarer_tables_principales($tables_principales){
 		"commentaire" => "TEXT NOT NULL DEFAULT ''",
 		"parrain" => "varchar(35) NOT NULL DEFAULT ''",
 		"tracking_id" => "bigint(21) NOT NULL",
-		"maj" 		=> "TIMESTAMP");
+		"maj" 		=> "TIMESTAMP"
+	);
 
 	$spip_factures_key = array(
 		"PRIMARY KEY" 	=> "id_facture",
-		"KEY id_auteur" => "id_auteur");
+		"KEY id_auteur" => "id_auteur"
+	);
 
 	$tables_principales['spip_factures'] = array(
 		'field' => &$spip_factures,
-		'key' => &$spip_factures_key);
+		'key' => &$spip_factures_key
+	);
 
+	$spip_factures_proforma = array(
+		"id_facture_proforma" 	=> "bigint(21) NOT NULL",
+		"id_transaction" 	=> "bigint(21) NOT NULL",
+		"no_comptable" 	=> "varchar(50) NOT NULL DEFAULT ''",
+		"montant_ht" 	=> "varchar(25) NOT NULL DEFAULT ''",
+		"montant" 	=> "varchar(25) NOT NULL DEFAULT ''",
+		"date" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
+		"client" => "TEXT NOT NULL DEFAULT ''",
+		"details" => "TEXT NOT NULL DEFAULT ''",
+		"commentaire" => "TEXT NOT NULL DEFAULT ''",
+		"parrain" => "varchar(35) NOT NULL DEFAULT ''",
+		"tracking_id" => "bigint(21) NOT NULL",
+		"maj" 		=> "TIMESTAMP"
+	);
+	$spip_factures_proforma_key = array(
+		"PRIMARY KEY" 	=> "id_facture_proforma",
+		"KEY id_transaction" => "id_transaction"
+	);
+
+	$tables_principales['spip_factures_proforma'] = array(
+		'field' => &$spip_factures_proforma,
+		'key' => &$spip_factures_proforma_key
+	);
 
 	return $tables_principales;
 }
@@ -54,12 +80,15 @@ function factures_upgrade($nom_meta_base_version,$version_cible){
 	$maj = array();
 	// creation initiale
 	$maj['create'] = array(
-		array('maj_tables',array('spip_factures')),
+		array('maj_tables',array('spip_factures','spip_factures_proforma')),
 	);
 
 	$maj['0.2.0'] = array(
 		array('maj_tables',array('spip_factures')),
 		array('sql_update','spip_factures',array('date'=>'date_paiement')),
+	);
+	$maj['0.3.0'] = array(
+		array('maj_tables',array('spip_factures','spip_factures_proforma')),
 	);
 
 	// lancer la maj
@@ -74,5 +103,6 @@ function factures_upgrade($nom_meta_base_version,$version_cible){
  */
 function factures_vider_tables($nom_meta_base_version) {
 	#sql_drop_table("spip_factures"); // pas de suppression car facture reglementaire
+	#sql_drop_table("spip_factures_proforma"); // pas de suppression car facture reglementaire
 	effacer_meta($nom_meta_base_version);
 }

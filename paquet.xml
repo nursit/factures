@@ -1,11 +1,11 @@
 <paquet
 	prefix="factures"
 	categorie="outil"
-	version="1.5.1"
+	version="1.6.0"
 	etat="stable"
-	compatibilite="[3.0.0;3.1.*]"
+	compatibilite="[3.0.0;3.2.*]"
 	logo="prive/themes/spip/images/facture-32.png"
-	schema="0.2.0"
+	schema="0.3.0"
 >	
 
 	<nom>Factures</nom>
@@ -13,10 +13,15 @@
 
 	<pipeline nom="declarer_tables_principales" inclure="factures_administrations.php" />
 	<pipeline nom="bank_facturer_reglement" inclure="factures_pipelines.php" />
+	<pipeline nom="bank_afficher_reglement_en_attente" inclure="factures_pipelines.php" />
 	<pipeline nom="autoriser" inclure="factures_pipelines.php" />
 	<pipeline nom="rechercher_liste_des_champs" inclure="factures_pipelines.php" />
+	<pipeline nom="trig_bank_reglement_en_attente" inclure="factures_pipelines.php" />
 
 	<menu nom="factures" titre="factures:icone_factures" parent="menu_activite" icone="images/facture-16.png" />
+
+	<onglet nom="factures" titre="factures:titre_page_factures" parent="onglets_factures" />
+	<onglet nom="factures_proforma" titre="factures:titre_page_factures_proforma" parent="onglets_factures" />
 
 	<necessite nom="bank" compatibilite="[2.1.0;*]" />
 </paquet>

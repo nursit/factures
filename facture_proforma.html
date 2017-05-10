@@ -1,6 +1,6 @@
 #CACHE{600}
 #HTTP_HEADER{Content-Type: text/html; charset=#CHARSET}
-<B_facture>
+<B_facture_proforma>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
@@ -10,9 +10,9 @@
 [<link rel="stylesheet" href="(#CHEMIN{factures/facture.css})" type="text/css" media="all" />]
 </head>
 <body>
-<BOUCLE_facture(factures){id_facture}>[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
-[(#INCLURE{fond=factures/corps,id_facture,hash=#ENV{hash,''}})]
-]</BOUCLE_facture>
+<BOUCLE_facture_proforma(factures_proforma){id_facture_proforma}>[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
+[(#INCLURE{fond=factures/corps_proforma,id_facture_proforma,hash=#ENV{hash,''}})]
+]</BOUCLE_facture_proforma>
 </body>
 </html>
-</B_facture>
+</B_facture_proforma>

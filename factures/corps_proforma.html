@@ -1,0 +1,15 @@
+<div class='facture'>
+<BOUCLE_facture(factures_proforma){id_facture_proforma}>
+	[(#INCLURE{fond=factures/top}{id_facture_proforma})]
+	[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
+
+		<h2>Facture #NO_COMPTABLE <small class="proforma">PROFORMA</small></h2>
+		<p class='date'>du [(#DATE|jour)] [(#DATE|affdate_mois_annee)]</p>
+		<p class='client'>#CLIENT</p>
+		[<p class='commentaire'>(#COMMENTAIRE)</p>]
+		#DETAILS
+		<h2 class='proforma'>PROFORMA</h2>
+	]
+	[(#INCLURE{fond=factures/pied}{id_facture_proforma})]
+</BOUCLE_facture>
+</div>

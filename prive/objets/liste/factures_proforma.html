@@ -1,0 +1,43 @@
+[(#SET{defaut_tri,#ARRAY{
+	date_paiement,#ENV{date_sens,-1},
+	no_comptable,-1,
+	id_facture,-1,
+	montant_ht,-1,
+	montant,-1,
+	montant_regle,-1,
+}})
+]<B_factures_proforma>
+<div class='liste-objets factures_proforma'>
+	<table class='spip liste'>
+	[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{factures:info_1_facture,factures:info_nb_factures}})</strong></caption>]
+		<thead>
+			<tr class='first_row'>
+				<th class='id' scope='col'>[(#TRI{id_facture,#,ajax})]</th>
+				<th class='nocomptable' scope='col'>[(#TRI{no_comptable,No,ajax})]</th>
+				<th class='id_auteur' scope='col'>[(#TRI{id_auteur,Aut,ajax})]</th>
+				<th class='montant_ht' scope='col'>[(#TRI{montant_ht,HT,ajax})]</th>
+				<th class='montant' scope='col'>[(#TRI{montant,TTC,ajax})]</th>
+				<th class='date' scope='col'>[(#TRI{date,<:date:>,ajax})]</th>
+				<th class='parrain' scope='col'>[(#TRI{parrain,Parrain,ajax})]</th>
+			</tr>
+		</thead>
+		<tbody>
+		<BOUCLE_factures_proforma(factures_proforma){id_facture_proforma?} {date>=#ENV{date_debut,0000-00-00}}{date<=#ENV{date_fin,3000-00-00}}{id_transaction?}{where?}{recherche?}{tri #ENV{par,id_facture_proforma},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
+			<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
+				<td class="id"><a href='[(#URL_PAGE{facture_proforma}|parametre_url{id_facture_proforma,#ID_FACTURE_PROFORMA}|parametre_url{hash,#DETAILS|md5})]'>#ID_FACTURE_PROFORMA</a></td>
+				<td class="nocomptable"><a href='[(#URL_PAGE{facture_proforma}|parametre_url{id_facture_proforma,#ID_FACTURE_PROFORMA}|parametre_url{hash,#DETAILS|md5})]' id='f#ID_FACTURE_PROFORMA'>#NO_COMPTABLE</a>
+					[<br /><small>(#INFO_NOM{auteur,#ID_AUTEUR})</small>]</td>
+				<td class="id_auteur"><a href='[(#ID_AUTEUR|generer_url_entite{auteur})]'>#ID_AUTEUR </a></td>
+				<td class="montant_ht">#MONTANT_HT</td>
+				<td class="montant">#MONTANT</td>
+				<td class="date">[<abbr title="[(#DATE|heures_minutes|attribut_html)]">(#DATE|affdate_jourcourt)</abbr>]</td>
+				<td class="parrain">#PARRAIN</td>
+			</tr>
+		</BOUCLE_factures_proforma>
+		</tbody>
+	</table>
+	[<p class='pagination'>(#PAGINATION{prive})</p>]
+</div>
+</B_factures_proforma>[
+<div class="liste-objets breves caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
+]<//B_factures_proforma>
