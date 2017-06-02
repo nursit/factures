@@ -3,12 +3,12 @@
 	[(#INCLURE{fond=factures/top}{id_facture})]
 	[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
 
-		<h2>Facture #NO_COMPTABLE</h2>
-		<p class='date'>du [(#DATE|jour)] [(#DATE|affdate_mois_annee)]</p>
+		<h2><:factures:titre_facture:> #NO_COMPTABLE</h2>
+		<p class='date'><:factures:info_facture_date_du:> [(#DATE|affdate)]</p>
 		<p class='client'>#CLIENT</p>
 		[<p class='commentaire'>(#COMMENTAIRE)</p>]
 		#DETAILS
-		[<p class='acquitee'>(#MONTANT_REGLE|=={#MONTANT}|?{' '})Facture acquitt&eacute;e le [(#DATE_PAIEMENT|affdate)]</p>]
+		[<p class='acquitee'>(#MONTANT_REGLE|=={#MONTANT}|oui)<:factures:info_facture_acquittee_le:>[ (#DATE_PAIEMENT|affdate)]</p>]
 	]
 	[(#INCLURE{fond=factures/pied}{id_facture})]
 </BOUCLE_facture>

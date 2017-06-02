@@ -4,7 +4,7 @@
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// L
-	'mail_imprimer_facture' => "En cliquant sur le lien ci-apr&egrave;s vous pourrez imprimer votre facture <a href='@url@' target='_blank'>@numero@</a>.<br />",
+	'mail_imprimer_facture' => "En cliquant sur le lien ci-après vous pourrez imprimer votre facture <a href='@url@' target='_blank'>@numero@</a>.<br />",
 	'info_aucune_facture' => 'Aucune facture',
 	'info_1_facture' => '1 facture',
 	'info_nb_factures' => '@nb@ factures',
@@ -26,5 +26,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_page_factures_proforma' => 'Factures PROFORMA',
 
 	'info_telecharger_facture_proforma' => 'Téléchargez votre facture PROFORMA @no_comptable@',
+
+	'info_facture_acquittee_le' => 'Facture acquittée le',
+	'titre_facture' => 'Facture',
+	'info_facture_date_du' => 'du',
 
 );
