@@ -15,5 +15,5 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function inc_numeroter_facture_proforma_dist($id_facture,$date){
 	$time = strtotime($date);
-	return "P.".date("Ymd",$time)."-$id_facture";
+	return "P.-$id_facture".date("Ymd",$time);
 }
