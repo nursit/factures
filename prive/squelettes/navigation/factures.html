@@ -1,7 +1,7 @@
 <B_factures>
 [(#BOITE_OUVRIR{'Export CSV','simple'})]
 <ul class='liste-items export-nav'>
-<BOUCLE_factures(factures){si #PLUGIN{spip_bonux}}{!par date}{fusion DATE_FORMAT('%Y-%m',date)}{0,24}>
+<BOUCLE_factures(factures){si #PLUGIN{spip_bonux}}{!par date}{fusion DATE_FORMAT(date,'%Y-%m')}{0,24}>
 <li class="item">
 	<a href="#URL_ACTION_AUTEUR{factures_export_csv_mensuel,#DATE|affdate{Y-m-d}}">[(#DATE|nom_mois)][ (#DATE|annee)]</a>
 </li>
