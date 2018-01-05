@@ -40,10 +40,26 @@ function factures_creer_facture($id_transaction, $options_notif=null){
 	if (!$row OR $row['id_facture']==-1)
 		return false;
 
-	// deja facture
-	if ($row['id_facture']){
-		$url= generer_url_public('facture',"id_facture=$id_facture&hash=".md5($row['details']),false,false);
-		return array($row['id_facture'],$row['no_comptable'],$url);
+	// il y a deja une facture ?
+	// on met a jour les infos de paiement si besoin, et on retourne
+	if ($id_facture = $row['id_facture']
+		and $facture = sql_fetsel('*','spip_factures', 'id_facture='.intval($id_facture))){
+
+		// verifier que le facture est bien reglee comme la transaction
+		// cas possible d'une facture emise avant paiement de la transaction, et indiquee comme non reglee
+		$set = array();
+		if (round($facture['montant_regle'],4) <= round($row['montant_regle'], 4)) {
+			$set['montant_regle'] = $row['montant_regle'];
+		}
+		if ($facture['date_paiement'] !== $row['date_paiement']) {
+			$set['date_paiement'] = $row['date_paiement'];
+		}
+		if ($set) {
+			sql_updateq('spip_factures', $set, 'id_facture='.intval($id_facture));
+		}
+
+		$url= generer_url_public('facture',"id_facture=$id_facture&hash=".md5($facture['details']),false,false);
+		return array($id_facture,$facture['no_comptable'],$url);
 	}
 
 	// verouiller la facturation de cette transaction
