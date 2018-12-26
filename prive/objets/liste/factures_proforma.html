@@ -19,6 +19,7 @@
 				<th class='montant' scope='col'>[(#TRI{montant,TTC,ajax})]</th>
 				<th class='date' scope='col'>[(#TRI{date,<:date:>,ajax})]</th>
 				<th class='parrain' scope='col'>[(#TRI{parrain,Parrain,ajax})]</th>
+				<th class='transaction' scope='col'>[(#TRI{id_transaction,T,ajax})]</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,6 +33,7 @@
 				<td class="montant">#MONTANT</td>
 				<td class="date">[<abbr title="[(#DATE|heures_minutes|attribut_html)]">(#DATE|affdate_jourcourt)</abbr>]</td>
 				<td class="parrain">#PARRAIN</td>
+				<td class="transaction">[(#ID_TRANSACTION|oui)<a href="[(#ID_TRANSACTION|generer_url_entite{transaction})]">##ID_TRANSACTION</a>]</td>
 			</tr>
 		</BOUCLE_factures_proforma>
 		</tbody>
