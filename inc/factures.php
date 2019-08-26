@@ -98,11 +98,15 @@ function factures_creer_facture($id_transaction, $options_notif=null){
 	$id_facture = sql_insertq('spip_factures',$set);
 
 	if ($id_facture){
-		$no_comptable = $numeroter_facture($id_facture,$set['date']);
+		// loger sur disque pour avoir une trace en cas de fail SQL sur le updateq suivant (permet une reparation manuelle)
+		spip_log("Transaction $id_transaction => Facture $id_facture",'factures'._LOG_INFO_IMPORTANTE);
+		// poser le pointeur immediatement, pour ne pas risquer d'avoir une facture orpheline
+		sql_updateq("spip_transactions",array("id_facture"=>$id_facture),"id_transaction=".intval($id_transaction));
 
+		// puis generer le numero comptable et mettre a jour la facture
+		$no_comptable = $numeroter_facture($id_facture,$set['date']);
 		$set['no_comptable'] = $no_comptable;
 		sql_updateq("spip_factures",array("no_comptable"=>$no_comptable),"id_facture=".intval($id_facture));
-		sql_updateq("spip_transactions",array("id_facture"=>$id_facture),"id_transaction=".intval($id_transaction));
 
 		pipeline('post_insertion',
 			array(
