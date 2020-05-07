@@ -11,6 +11,16 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
+/**
+ * Déclaration des alias de tables et filtres automatiques de champs
+ * @param array $interfaces
+ * @return array
+ */
+function factures_declarer_tables_interfaces($interfaces) {
+	$interfaces['table_des_tables']['factures'] = 'factures';
+	return $interfaces;
+}
+
 
 function factures_declarer_tables_principales($tables_principales){
 
@@ -37,9 +47,15 @@ function factures_declarer_tables_principales($tables_principales){
 		"KEY id_auteur" => "id_auteur"
 	);
 
+	$spip_factures_join = array(
+		"id_facture" => "id_facture",
+		"id_auteur" => "id_auteur",
+	);
+
 	$tables_principales['spip_factures'] = array(
 		'field' => &$spip_factures,
-		'key' => &$spip_factures_key
+		'key' => &$spip_factures_key,
+		'join' => &$spip_factures_join
 	);
 
 	$spip_factures_proforma = array(

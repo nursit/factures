@@ -1,7 +1,7 @@
 <paquet
 	prefix="factures"
 	categorie="outil"
-	version="1.6.5"
+	version="1.6.6"
 	etat="stable"
 	compatibilite="[3.0.0;3.2.*]"
 	logo="prive/themes/spip/images/facture-32.png"
@@ -12,6 +12,7 @@
 	<!-- Factures -->
 
 	<pipeline nom="declarer_tables_principales" inclure="factures_administrations.php" />
+	<pipeline nom="declarer_tables_interfaces" inclure="factures_administrations.php" />
 	<pipeline nom="bank_facturer_reglement" inclure="factures_pipelines.php" />
 	<pipeline nom="bank_afficher_reglement_en_attente" inclure="factures_pipelines.php" />
 	<pipeline nom="autoriser" inclure="factures_pipelines.php" />
