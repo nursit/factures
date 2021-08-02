@@ -1,9 +1,9 @@
 <paquet
 	prefix="factures"
 	categorie="outil"
-	version="1.6.6"
+	version="2.0.0"
 	etat="stable"
-	compatibilite="[3.0.0;3.2.*]"
+	compatibilite="[3.2.0;4.0.*]"
 	logo="prive/themes/spip/images/facture-32.png"
 	schema="0.3.0"
 >	
