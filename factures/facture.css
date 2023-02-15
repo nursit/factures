@@ -2,9 +2,9 @@ body {font-size:100%;background:#fff;}
 div.facture {width:600px;border:1px solid #999;background:#fff;margin:0 auto;padding:20px;}
 
 h1,h2 {text-align:right;margin-bottom: 0}
-p {margin-top: 0}
+p, div.p {margin-top: 0; margin-bottom: 1.5em;}
 p.date {text-align:right;}
-p.client {margin-left:300px;border-top:1px solid #999;border-bottom:1px solid #999;margin-bottom: 2.5em;}
+p.client, div.client {margin-left:300px;border-top:1px solid #999;border-bottom:1px solid #999;margin-bottom: 2.5em;}
 
 table {margin:20px auto;border:1px solid #eee;border-collapse:collapse;width:90%;}
 table caption {text-align: left;font-weight: bold}

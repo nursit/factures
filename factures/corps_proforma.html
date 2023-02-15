@@ -3,12 +3,14 @@
 	[(#INCLURE{fond=factures/top}{id_facture_proforma})]
 	[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
 
-		<h2>Facture #NO_COMPTABLE <small class="proforma">PROFORMA</small></h2>
-		<p class='date'>du [(#DATE|jour)] [(#DATE|affdate_mois_annee)]</p>
-		<p class='client'>#CLIENT</p>
-		[<p class='commentaire'>(#COMMENTAIRE)</p>]
-		#DETAILS
-		<h2 class='proforma'>PROFORMA</h2>
+		<h2 class="ref-facture">Facture #NO_COMPTABLE <small class="proforma">PROFORMA</small></h2>
+		<p class='date'><:factures:info_facture_date_du:> [(#DATE|affdate)]</p>
+		<div class='client p'>#CLIENT</div>
+		[<div class='commentaire p'>(#COMMENTAIRE)</div>]
+		<div class="details">
+			#DETAILS
+		</div>
+		[<div class='acquitee p'>(#MONTANT_REGLE|=={#MONTANT}|oui)<:factures:info_facture_acquittee_le:>[ (#DATE_PAIEMENT|affdate)]</div>]
 	]
 	[(#INCLURE{fond=factures/pied}{id_facture_proforma})]
 </BOUCLE_facture>
