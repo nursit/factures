@@ -9,7 +9,7 @@
 <meta name="author" content="<:meta_author:>" />
 [<link rel="stylesheet" href="(#CHEMIN{factures/facture.css})" type="text/css" media="all" />]
 </head>
-<body>
+<body class="facture-html">
 <BOUCLE_facture(factures){id_facture}>[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
 [(#INCLURE{fond=factures/corps,id_facture,hash=#ENV{hash,''}})]
 ]</BOUCLE_facture>
