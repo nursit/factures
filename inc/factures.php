@@ -227,3 +227,35 @@ function factures_creer_facture_proforma($id_transaction, $options_notif=null){
 
 	return array($id_facture_proforma, $no_comptable, $url);
 }
+
+/**
+ * Remettre a jour les champs clients et details d'une facture
+ * DEVELOPMENT purpose only
+ *
+ * @param int $id_transaction
+ * @param string $table
+ * @return int
+ */
+function factures_update_facture_deja($id_transaction, $table = 'spip_factures') {
+
+	if ($table === 'spip_factures') {
+		$id_facture = sql_getfetsel('id_facture', 'spip_transactions', 'id_transaction='.intval($id_transaction));
+		$primary = 'id_facture';
+	}
+	elseif($table === 'spip_factures_proforma') {
+		$id_facture = sql_getfetsel('id_facture_proforma', 'spip_factures_proforma', 'id_transaction='.intval($id_transaction));
+		$primary = 'id_facture_proforma';
+	}
+
+	$id_auteur = sql_getfetsel('id_auteur', 'spip_transactions', 'id_transaction='.intval($id_transaction));
+
+	// recalculer les champs details et clients
+	$set = [];
+	$set['details'] = recuperer_fond('modeles/transaction_details',array('id_transaction'=>$id_transaction));
+	if ($id_auteur) {
+		$set['client'] = recuperer_fond('modeles/client_adresse_facture',array('id_auteur'=>$id_auteur,'id_transaction'=>$id_transaction));
+	}
+	sql_updateq($table, $set, "$primary=".intval($id_facture));
+
+	return $id_facture;
+}
