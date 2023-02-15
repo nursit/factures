@@ -1,0 +1,17 @@
+#CACHE{0}
+<BOUCLE_facture(factures){id_facture}>[(#ENV{hash,''}|=={#DETAILS|md5}|oui)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js">
+	<head>
+		<title>[(#TITRE|textebrut|typo)]</title>
+		#INCLURE{fond=pdf_version/inclure/head}
+		<style type="text/css">
+		[(#INCLURE{#CHEMIN{factures/facture.css}|direction_css|url_absolue_css}|compacte{css})]
+		</style>
+	</head>
+	<body class="facture-pdf">[
+	(#INCLURE{fond=factures/corps,id_facture,hash=#ENV{hash,''}})]
+	]</body>
+</html>
+</BOUCLE_facture>
+#FILTRE{liens_absolus}

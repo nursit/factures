@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html dir="#LANG_DIR" lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js">
+	<head>
+		#INCLURE{fond=pdf_version/inclure/head}
+		<style type="text/css">
+		[(#INCLURE{#CHEMIN{factures/facture.css}|direction_css|url_absolue_css}|compacte{css})]
+		</style>
+	</head>
+	<body style='margin: 0;padding: 0;'>
+		<div id="myfooter">
+			[(#INCLURE{fond=factures/pied,id_facture})]
+		</div>
+	</body>
+</html>
+#FILTRE{liens_absolus}

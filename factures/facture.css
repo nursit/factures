@@ -29,6 +29,7 @@ h2.proforma {text-align: center}
 .header #logo_site_spip small { display:block;font-size: 0.65em;line-height: 1;color:#888;font-weight: normal}
 
 .footer {font-size: 0.9em;text-align: center;margin: 4em 0 1em;}
+.facture-pdf .footer {display: none}
 
 @media (max-width: 650px){
     div.facture {width: auto;border: 0;}
