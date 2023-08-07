@@ -48,7 +48,8 @@ function factures_creer_facture($id_transaction, $options_notif=null){
 		// verifier que le facture est bien reglee comme la transaction
 		// cas possible d'une facture emise avant paiement de la transaction, et indiquee comme non reglee
 		$set = array();
-		if (round($facture['montant_regle'],4) <= round($row['montant_regle'], 4)) {
+		if (empty($facture['montant_regle'])
+		  or round($facture['montant_regle'],4) <= round($row['montant_regle'], 4)) {
 			$set['montant_regle'] = $row['montant_regle'];
 		}
 		if ($facture['date_paiement'] !== $row['date_paiement']) {
