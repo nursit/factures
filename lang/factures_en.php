@@ -2,7 +2,7 @@
 
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
 
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 	// L
 	'mail_imprimer_facture' => "By clicking on this link you will be able to print your invoice <a href='@url@' target='_blank'>@numero@</a>.<br />",
 	'info_aucune_facture' => 'No invoice',
@@ -30,5 +30,4 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_facture_acquittee_le' => 'Invoice paid on',
 	'titre_facture' => 'Invoice',
 	'info_facture_date_du' => 'of',
-
-);
+];
