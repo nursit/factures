@@ -28,7 +28,7 @@
 				<td class="id"><a href='[(#URL_PAGE{facture}|parametre_url{id_facture,#ID_FACTURE}|parametre_url{hash,#DETAILS|md5})]'>#ID_FACTURE</a></td>
 				<td class="nocomptable"><a href='[(#URL_PAGE{facture}|parametre_url{id_facture,#ID_FACTURE}|parametre_url{hash,#DETAILS|md5})]' id='f#ID_FACTURE'>#NO_COMPTABLE</a>
 					[<br /><small>(#INFO_NOM{auteur,#ID_AUTEUR})</small>]</td>
-				<td class="id_auteur"><a href='[(#ID_AUTEUR|generer_url_entite{auteur})]'>#ID_AUTEUR </a></td>
+				<td class="id_auteur"><a href='[(#ID_AUTEUR|generer_objet_url{auteur})]'>#ID_AUTEUR </a></td>
 				<td class="montant_ht">#MONTANT_HT</td>
 				<td class="montant">#MONTANT[(#MONTANT_REGLE|=={#MONTANT}|non)<br /><span class="warning">R&eacute;gl&eacute; : #MONTANT_REGLE</span>]</td>
 				<td class="date">[<abbr title="[(#DATE|heures_minutes|attribut_html)]">(#DATE|affdate_jourcourt)</abbr>]
