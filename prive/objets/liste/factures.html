@@ -23,7 +23,8 @@
 			</tr>
 		</thead>
 		<tbody>
-		<BOUCLE_factures(factures){id_facture?} {date_paiement>=#ENV{date_debut,0000-00-00}}{date_paiement<=#ENV{date_fin,3000-00-00}}{id_auteur?}{where?}{recherche?}{tri #ENV{par,id_facture},#GET{defaut_tri}}{pagination #ENV{nb,10}}{0,200000}>
+		<BOUCLE_factures(factures){id_facture?} {date_paiement>=#ENV{date_debut,0000-00-00}}{date_paiement<=#ENV{date_fin,3000-00-00}}{id_auteur?}{where?}{recherche?}{tri #ENV{par,id_facture},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
+			<BOUCLE_lafacture(factures){id_facture}>
 			<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
 				<td class="id"><a href='[(#URL_PAGE{facture}|parametre_url{id_facture,#ID_FACTURE}|parametre_url{hash,#DETAILS|md5})]'>#ID_FACTURE</a></td>
 				<td class="nocomptable"><a href='[(#URL_PAGE{facture}|parametre_url{id_facture,#ID_FACTURE}|parametre_url{hash,#DETAILS|md5})]' id='f#ID_FACTURE'>#NO_COMPTABLE</a>
@@ -40,6 +41,7 @@
 					[<small>(#BOUTON_ACTION{Renvoyer,#URL_ACTION_AUTEUR{renvoyer_facture,#ID_FACTURE,#SELF|parametre_url{id_resend,#ID_FACTURE}}})</small>]
 					})]</td>
 			</tr>
+			</BOUCLE_lafacture>
 		</BOUCLE_factures>
 		</tbody>
 	</table>
