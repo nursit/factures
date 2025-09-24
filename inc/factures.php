@@ -67,9 +67,12 @@ function factures_creer_facture($id_transaction, $options_notif=null){
 	sql_updateq("spip_transactions",array('id_facture'=>-1),"id_transaction=".intval($id_transaction));
 
 
-	// creer la facture
+	// creer la facture, toujours dans la langue du site (ou le fr)
+	include_spip('inc/lang');
+	lang_select($GLOBALS['meta']['langue_site'] ?? 'fr');
 	$details = recuperer_fond('modeles/transaction_details',array('id_transaction'=>$id_transaction));
 	$client = recuperer_fond('modeles/client_adresse_facture',array('id_auteur'=>$row['id_auteur'],'id_transaction'=>$id_transaction));
+	lang_select();
 
 	$numeroter_facture = charger_fonction('numeroter_facture','inc');
 
@@ -158,9 +161,12 @@ function factures_creer_facture_proforma($id_transaction, $options_notif=null){
 	}
 
 	// creer les elements de la facture proforma, comme pour une vrai facture
+	// toujours dans la langue du site (ou fr)
+	include_spip('inc/lang');
+	lang_select($GLOBALS['meta']['langue_site'] ?? 'fr');
 	$details = recuperer_fond('modeles/transaction_details',array('id_transaction'=>$id_transaction));
 	$client = recuperer_fond('modeles/client_adresse_facture',array('id_auteur'=>$row['id_auteur'],'id_transaction'=>$id_transaction));
-
+	lang_select();
 
 	// deja une facture proforma ?
 	if ($proforma = sql_fetsel('*','spip_factures_proforma','id_transaction='.intval($id_transaction),'','id_facture_proforma DESC','0,1')
@@ -251,11 +257,14 @@ function factures_update_facture_deja($id_transaction, $table = 'spip_factures')
 	$id_auteur = sql_getfetsel('id_auteur', 'spip_transactions', 'id_transaction='.intval($id_transaction));
 
 	// recalculer les champs details et clients
+	include_spip('inc/lang');
+	lang_select($GLOBALS['meta']['langue_site'] ?? 'fr');
 	$set = [];
 	$set['details'] = recuperer_fond('modeles/transaction_details',array('id_transaction'=>$id_transaction));
 	if ($id_auteur) {
 		$set['client'] = recuperer_fond('modeles/client_adresse_facture',array('id_auteur'=>$id_auteur,'id_transaction'=>$id_transaction));
 	}
+	lang_select();
 	sql_updateq($table, $set, "$primary=".intval($id_facture));
 
 	return $id_facture;
